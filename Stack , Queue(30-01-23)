@@ -92,7 +92,7 @@ void display()
 #include<stdio.h>
 #define N 5
 int queue[N],choice,x,i;  
-int front = -1, rear = -1;
+int front=-1,rear=-1;
 void insert();  
 void delete();  
 void display();  
@@ -158,7 +158,7 @@ void insert()
 }  
 void delete()  
 {  
-    if (front==-1||front>rear)  
+    if(front==-1||front>rear)  
     {  
         printf("\n Queue Underflow");  
         return;  
