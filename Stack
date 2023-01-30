@@ -1,0 +1,196 @@
+1.Stack using arrays
+
+#include<stdio.h>
+#define N 100
+int stack[N],choice,top,x,i;
+void push();
+void pop();
+void display();
+int main()
+{
+    top=-1;
+    printf("\n 1.push\n 2.pop\n 3.display\n 4.exit\n");
+    do{
+        printf("\n Enter choice:");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+            {
+                push();
+                break;
+            }
+            case 2:
+            {
+                pop();
+                break;
+            }
+            case 3:
+            {
+                display();
+                break;
+            }
+            case 4:
+            {
+                printf("\n Exit");
+                break;
+            }
+            default:
+            {
+                printf("\n Enter valid choice(1/2/3/4)");
+            }
+        }
+    }
+    while(choice!=4);
+    return 0;    
+}
+void push()
+{
+    if(top>=N-1)
+    {
+        printf("\n Stack overflow");
+    }
+    else
+    {
+        printf("\n Value to be pushed:");
+        scanf("%d",&x);
+        top++;
+        stack[top]=x;
+    }
+}
+void pop()
+{
+    if(top<=-1)
+    {
+        printf("\n Stack underflow");
+    }
+    else
+    {
+        printf("\n Popped elementis: %d",stack[top]);
+        top--;
+    }
+}
+void display()
+{
+    if(top>=0)
+    {
+        printf(" Elements in stack:\n");
+        for(i=top;i>=0;i--)
+        {
+            printf("\n%d",stack[i]);
+        }
+        printf("\n Press next choice:");
+    }
+    else
+    {
+        printf("\n Stack is empty");
+    }
+}
+
+2.Queue using array
+
+#include<stdio.h>
+#define N 5
+int queue[N];  
+int item,i;
+int front = -1, rear = -1;
+void insert();  
+void delete();  
+void display();  
+void main ()  
+{  
+    int choice;   
+    while(choice != 4)   
+    {     
+        printf("\n 1.insert an element\n2.Delete an element\n3.Display the queue\n4.Exit\n");  
+        printf("\n Enter your choice :");  
+        scanf("%d",&choice);  
+        switch(choice)  
+        {  
+            case 1:
+            {
+                insert();  
+                break;
+            }
+            case 2:
+            {
+                delete();  
+                break;
+            }
+            case 3:  
+            {
+                display();  
+                break;
+            }
+            case 4:  
+            {
+                printf("\n Exit");  
+                break;
+            }
+            default: 
+            {
+                printf("\n Enter valid choice(1/2/3/4)");
+            }
+        }  
+    }  
+}  
+void insert()  
+{  
+    printf("\n Enter the element:");  
+    scanf("\n %d",&item);      
+    if(rear==N-1)  
+    {  
+        printf("\n Queue Overflow");  
+        return;  
+    }  
+    if(front==-1&&rear==-1)  
+    {  
+        front=0;  
+        rear=0;  
+    }  
+    else   
+    {  
+        rear=rear+1;  
+    }  
+    queue[rear]=item;  
+    printf("\n Value inserted ");  
+      
+}  
+void delete()  
+{  
+    if (front==-1||front>rear)  
+    {  
+        printf("\n Queue Underflow");  
+        return;  
+              
+    }  
+    else  
+    {  
+        item=queue[front];  
+        if(front==rear)  
+        {  
+            front=-1;  
+            rear=-1 ;  
+        }  
+        else   
+        {  
+            front=front+1;  
+        }  
+        printf("\n Value deleted ");  
+    }  
+}  
+void display()  
+{  
+    if(rear==-1)  
+    {  
+        printf("\n Empty queue");  
+    }  
+    else  
+    {   
+        for(i=front;i<=rear;i++)  
+        {  
+            printf("\n %d",queue[i]);  
+        }     
+    }  
+}  
+
