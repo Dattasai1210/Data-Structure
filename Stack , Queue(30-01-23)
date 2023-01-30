@@ -98,7 +98,7 @@ void delete();
 void display();  
 void main ()  
 {  
-    printf("\n1.insert an element \n2.Delete an element \n3.Display the queue \n4.Exit");  
+    printf("\n1.Insert \n2.Delete \n3.Display \n4.Exit");  
     do 
     {     
         
@@ -109,7 +109,7 @@ void main ()
             case 1:
             {
                 insert();  
-                break;
+                break;     
             }
             case 2:
             {
