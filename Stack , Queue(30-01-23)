@@ -91,18 +91,17 @@ void display()
 
 #include<stdio.h>
 #define N 5
-int queue[N];  
-int item,i;
+int queue[N],choice,x,i;  
 int front = -1, rear = -1;
 void insert();  
 void delete();  
 void display();  
 void main ()  
 {  
-    int choice;   
-    while(choice != 4)   
+    printf("\n1.insert an element \n2.Delete an element \n3.Display the queue \n4.Exit");  
+    do 
     {     
-        printf("\n 1.insert an element\n2.Delete an element\n3.Display the queue\n4.Exit\n");  
+        
         printf("\n Enter your choice :");  
         scanf("%d",&choice);  
         switch(choice)  
@@ -132,12 +131,13 @@ void main ()
                 printf("\n Enter valid choice(1/2/3/4)");
             }
         }  
-    }  
+    }
+    while(choice!=4) ; 
 }  
 void insert()  
 {  
     printf("\n Enter the element:");  
-    scanf("\n %d",&item);      
+    scanf("\n %d",&x);      
     if(rear==N-1)  
     {  
         printf("\n Queue Overflow");  
@@ -152,7 +152,7 @@ void insert()
     {  
         rear=rear+1;  
     }  
-    queue[rear]=item;  
+    queue[rear]=x;  
     printf("\n Value inserted ");  
       
 }  
@@ -166,7 +166,7 @@ void delete()
     }  
     else  
     {  
-        item=queue[front];  
+        x=queue[front];  
         if(front==rear)  
         {  
             front=-1;  
@@ -193,4 +193,3 @@ void display()
         }     
     }  
 }  
-
