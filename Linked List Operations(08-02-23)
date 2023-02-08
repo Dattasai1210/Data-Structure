@@ -1,0 +1,173 @@
+// Insertion at Beginning //
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *link;
+};
+struct node *add_beg(struct node *head,int d)
+{
+    struct node *ptr=malloc(sizeof(struct node));
+    ptr->data=d;
+    ptr->link=NULL;
+
+    ptr->link=head;
+    head=ptr;
+    return head;
+}
+int main()
+{
+    struct node *head=malloc(sizeof(struct node));
+    head->data=45;
+    head->link=NULL;
+
+    struct node *ptr=malloc(sizeof(struct node));
+    ptr->data=98;
+    ptr->link=NULL;
+
+    head->link=ptr;
+    int data=3;
+
+    head=add_beg(head,data);
+    ptr=head;
+    while(ptr!=NULL){
+        printf("%d ",ptr->data);
+        ptr=ptr->link;
+    }
+    return 0;
+}
+
+// Insertion at End //
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *link;
+};
+
+void*add(struct node *head)
+{
+    struct node *ki;
+    struct node *ptr=head;
+    struct node *ptr2=malloc(sizeof(struct node));
+    ptr2->data=90;
+    ptr2->link=NULL;
+
+
+    while(ptr->link!=NULL)
+    {
+        ptr=ptr->link;
+
+    }
+    ptr->link=ptr2;
+    ki=head;
+
+    while(ki!=NULL)
+    {
+        printf("%d ",ki->data);
+        ki=ki->link;
+    }
+}
+
+int main()
+{
+    struct node *head=NULL;
+    struct node *l;
+    struct node *p=malloc(sizeof(struct node));
+    p->data=10;
+    p->link=NULL;
+    head=p;
+
+    struct node *p1=malloc(sizeof(struct node));
+    p1->data=20;
+    p->link=p1;
+
+
+    struct node *p2=malloc(sizeof(struct node));
+    p2->data=30;
+    p1->link=p2;
+
+
+    struct node *p3=malloc(sizeof(struct node));
+    p3->data=40;
+    p2->link=p3;
+    p3->link=NULL;
+
+    add(head);
+
+    // head=add(head);
+    // l=head;
+    // while(l!=NULL)
+    // {
+    //     printf("%d ",l->data);
+    //     l=l->link;
+    // }
+
+}
+
+// Insertion at Specific Position //
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *link;
+};
+
+void add_at_pos(struct node *head)
+{
+    struct node *ptr=head;
+    struct node *ptr2=malloc(sizeof(struct node));
+    ptr2->data=90;
+    ptr2->link=NULL;
+    int pos=2;
+
+    while(pos!=1)
+    {
+        ptr=ptr->link;
+        pos--;
+    }
+    ptr2->link=ptr->link;
+    ptr->link=ptr2;
+    while(head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->link;
+    }
+}
+
+int main()
+{
+    struct node *head=NULL;
+    struct node *l;
+    struct node *p=malloc(sizeof(struct node));
+    p->data=10;
+    p->link=NULL;
+    head=p;
+
+    struct node *p1=malloc(sizeof(struct node));
+    p1->data=20;
+    p->link=p1;
+
+
+    struct node *p2=malloc(sizeof(struct node));
+    p2->data=30;
+    p1->link=p2;
+
+
+    struct node *p3=malloc(sizeof(struct node));
+    p3->data=40;
+    p2->link=p3;
+    p3->link=NULL;
+
+    add_at_pos(head);
+    // l=head;
+    // while(l!=NULL)
+    // {
+    //     printf("%d ",l->data);
+    //     l=l->link;
+    // }
+
+}
