@@ -1,0 +1,256 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void create();
+void display();
+void insert_begin();
+void insert_pos();
+void insert_end();
+void delete_begin();
+void delete_pos();
+void delete_end();
+
+struct node *head=NULL;
+
+struct node{
+    int data;
+    struct node *link;
+};
+
+int main()
+{
+    int choice;
+    while(1)
+    {
+        printf("1. create\n");
+        printf("2. display\n");
+        printf("3. insert_begin\n");
+        printf("4. insert_pos\n");
+        printf("5. insert_end\n");
+        printf("6. delete_begin\n");
+        printf("7. delete_pos\n");
+        printf("8. delete_end\n");
+        
+        printf("Enter choice:");
+        scanf("%d",&choice);
+        
+        switch(choice)
+        {
+            case 1:create();
+                    break;
+            
+            case 2:display();
+                    break;
+            
+            case 3:insert_begin();
+                    break;
+            
+            case 4:insert_pos();
+                    break;
+            
+            case 5:insert_end();
+                    break;
+            
+            case 6:delete_begin();
+                    break;
+            
+            case 7:delete_pos();
+                    break;
+            
+            case 8:delete_end();
+                    break;
+            
+            case 9:exit(0);
+            
+            default:printf("wrong choice");
+                    break;
+        }
+    }
+}
+
+void create()
+{
+    struct node *current=malloc(sizeof(struct node));
+    printf("Enter data:");
+    scanf("%d",&current->data);
+    
+    if(head==NULL)
+    {
+        head=current;
+    }
+    else
+    {
+        struct node *ptr=head;
+        while(ptr->link!=NULL)
+        {
+            ptr=ptr->link;
+        }
+        ptr->link=current;
+    }
+}
+
+void display()
+{
+    if(head==NULL)
+    {
+        printf("List is empty:");
+        return;
+    }
+    printf("List is:");
+    
+    struct node *ptr=head;
+    while(ptr!=NULL)
+    {
+        printf("%d ",ptr->data);
+        ptr=ptr->link;
+    }
+    printf("\n");
+}
+
+void insert_begin()
+{
+    struct node *current=malloc(sizeof(struct node));
+    printf("Enter data:");
+    scanf("%d",&current->data);
+    
+    current->link=NULL;
+    
+    if(head==NULL)
+    {
+        head=current;
+        return;
+    }
+    else
+    {
+        current->link=head;
+        head=current;
+    }
+}
+
+void insert_pos()
+{
+    struct node *current=malloc(sizeof(struct node));
+    printf("Enter data:");
+    scanf("%d",&current->data);
+    
+    current->link=NULL;
+    if(head==NULL)
+    {
+        head=current;
+        return;
+    }
+    else
+    {
+        struct node *ptr1;
+        struct node *ptr=head;
+        int pos;
+        printf("Enter position:");
+        scanf("%d",&pos);
+        
+        for(int i=0;i<pos;i++)
+        {
+            ptr1=ptr;
+            ptr=ptr->link;
+        }
+        current->link=ptr;
+        ptr1->link=current;
+    }
+}
+
+void insert_end()
+{
+    struct node *current=malloc(sizeof(struct node));
+    printf("Enter data:");
+    scanf("%d",&current->data);
+    
+    current->link=NULL;
+    if(head==NULL)
+    {
+        head=current;
+        return;
+    }
+    else
+    {
+        struct node *ptr=head;
+        if(ptr->link!=NULL)
+        {
+            ptr=ptr->link;
+        }
+        ptr->link=current;
+    }
+}
+
+void delete_begin()
+{
+    if(head==NULL)
+    {
+        printf("List is empty:");
+        return;
+    }
+    else
+    {
+        struct node *ptr=head;
+        head=head->link;
+        free(ptr);
+        printf("Deleted node:");
+    }
+}
+
+void delete_pos()
+{
+    int pos;
+    printf("Enter node position to delete:");
+    scanf("%d",&pos);
+    
+    struct node *ptr=head;                                                                               
+    
+    if(head==NULL)
+    {
+        printf("List is empty:");
+        return;
+    }
+    else if(pos==0)
+    {
+        ptr=head;
+        head=ptr->link;
+        free(ptr);
+    }
+    else
+    {
+        struct node *ptr1;
+        for(int i=0;i<pos;i++)
+        {
+            ptr1=ptr;
+            ptr=ptr->link;
+        }
+        ptr1->link=ptr->link;
+        free(ptr);
+    }
+}
+
+void delete_end()
+{
+    if(head==NULL)
+    {
+        printf("List is empty;");
+        return;
+    }
+    else if(head->link==NULL)
+    {
+        struct node *ptr=head;
+        head=ptr->link;
+        free(ptr);
+    }
+    else
+    {
+        struct node *ptr=head;
+        struct node *ptr1=NULL;
+        while(ptr->link!=NULL)
+        {
+            ptr1=ptr;
+            ptr=ptr->link;
+        }
+        ptr1->link=NULL;
+        free(ptr);
+    }
+}
